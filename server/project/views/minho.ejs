@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <!-- google charts -->
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+
+</head>
+
+<style>
+@import 'https://fonts.googleapis.com/css?family=Lato:300,400';
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body, html {
+	font-family: 'Lato', sans-serif;
+	font-size: 20px;
+	height: 100%;
+	position: relative;
+  background-image: url(https://i.dailymail.co.uk/1s/2020/05/01/15/27843784-8273755-Transport_yourself_to_the_lush_green_forest_and_mountains_of_Sri-a-82_1588343892488.jpg);
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.nav-btn {
+	width: 100%;
+	height: 35px;
+	padding-top: 4px;
+	color: #D5D3D3;
+	background-color: #212121;			 ;
+	text-align: center;
+	cursor: pointer;
+	display: none;
+}
+.nav-btn:active {
+	background-color: #090909;
+}
+
+header {
+	height: 50px;
+	width: 100%;
+	background-color: #274C6B;
+	display: none;
+}
+
+header .logo {
+	opacity: 0.9;
+	font-size: 120%;
+	padding-top: 9px;
+	padding-left: 8px;
+	color: #fff;
+}
+header .logo span {
+	font-weight: 300;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.sidebar {
+	width: 250px;
+	background-color: #302F2F;
+	position: fixed;
+	top: 0px;
+	left: 0;
+	bottom: 0;
+	box-shadow: 1px 0px 10px #777;
+}
+
+.sidebar nav > a {
+	font-size: 150%;
+	display: inline-block;
+	padding: 30px 0px;
+	padding-left: 30px;
+	opacity: 0.7;
+	transition: all 0.2s;
+}
+.sidebar nav > a:hover {
+	opacity: 1;
+}
+
+.sidebar nav a span {
+	font-weight: 300;
+}
+
+.sidebar nav ul {
+	list-style: none;
+}
+
+.sidebar nav ul li {
+	font-size: 70%;
+	padding: 19px 0;
+	padding-left: 20px;
+	border-bottom: 0.5px solid #111;
+}
+
+.sidebar nav ul li:nth-child(1):hover {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(1).active {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(2):hover {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(2).active {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(3):hover {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(3).active {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(4):hover {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(4).active {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(5):hover {
+	background-color: #f1c40f;
+}
+
+.sidebar nav ul li:nth-child(5).active {
+	background-color: #f1c40f;
+}
+
+.sidebar nav ul li:nth-child(6):hover {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(6).active {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(7):hover {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(7).active {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(8):hover {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(8).active {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(9):hover {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(9).active {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(10):hover {
+	background-color: #f1c40f;
+}
+
+.sidebar nav ul li:nth-child(10).active {
+	background-color: #f1c40f;
+}
+
+.sidebar nav ul li a {
+	color: #D7D5D5;
+}
+
+.sidebar nav ul li:hover a{
+	color: #fff;
+}
+
+.main-content {
+
+	width: calc(100% - 250px);
+	height: 100%;
+	margin-left: 250px;
+	padding: 20px 30px;
+}
+.main-content .panel-wrapper {
+	margin: 20px 0;
+	box-shadow: 0px 1px 5px #777;
+  background-color: #fff;
+}
+
+.main-content .panel-wrapper .panel-head {
+	background-color: #2980b9;
+	color: #fff;
+	padding: 10px 10px;
+	border: 1px solid #00A5F2;
+}
+.main-content .panel-wrapper .panel-body {
+	padding: 20px 10px;
+	font-size: 80%;
+}
+
+@media only screen and (max-width: 420px){
+	header {
+		display: block;
+	}
+	.nav-btn {
+		display: block;
+	}
+	.sidebar {
+		position: relative;
+		height: 378px;
+		width: 100%;
+		display: none;
+		margin-bottom: 40px;
+		z-index: 1000;
+	}
+	.main-content {
+		width: 100%;
+		margin-left: 0;
+		z-index: -1;
+		position: relative;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	header {
+		display: block;
+	}
+	.nav-btn {
+		display: block;
+	}
+	.sidebar {
+		position: relative;
+		height: 378px;
+		width: 100%;
+		display: none;
+		margin-bottom: 40px;
+		z-index: 1000;
+	}
+	.main-content {
+		width: 100%;
+		margin-left: 0;
+		z-index: -1;
+		position: relative;
+	}
+}
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 10px;
+  font-family: 'DM Sans', sans-serif;
+  transition: background .4s ease-in;
+  background-color: #c394f8;
+
+  &.blue {
+    background-color: #428aa6;
+  }
+}
+
+input[type=radio] {
+  display: none;
+}
+
+.card {
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transition: transform .4s ease;
+  cursor: pointer;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  max-height: 600px;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+#item-1:checked ~ .cards #song-3, #item-2:checked ~ .cards #song-1, #item-3:checked ~ .cards #song-2 {
+  transform: translatex(-40%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+
+#item-1:checked ~ .cards #song-2, #item-2:checked ~ .cards #song-3, #item-3:checked ~ .cards #song-1 {
+  transform: translatex(40%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+
+#item-1:checked ~ .cards #song-1, #item-2:checked ~ .cards #song-2, #item-3:checked ~ .cards #song-3 {
+  transform: translatex(0) scale(1);
+  opacity: 1;
+  z-index: 1;
+
+  img {
+    box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
+  }
+}
+
+.player {
+  background-color: #fff;
+  border-radius: 8px;
+  min-width: 320px;
+  padding: 16px 10px;
+}
+
+.upper-part {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  height: 36px;
+  overflow: hidden;
+}
+
+.play-icon{ margin-right: 10px; }
+
+.song-info {
+  width: calc(100% - 32px);
+  display: block;
+}
+
+.song-info .title {
+  color: #403d40;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.sub-line {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.subtitle, .time {
+  font-size: 12px;
+  line-height: 16px;
+  color: #c6c5c6;
+}
+
+.time {
+  font-size: 12px;
+  line-height: 16px;
+  color: #a5a5a5;
+  font-weight: 500;
+  margin-left: auto;
+}
+
+.progress-bar {
+  height: 3px;
+  width: 100%;
+  background-color: #e9efff;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress {
+  display: block;
+  position: relative;
+  width: 60%;
+  height: 100%;
+  background-color: #2992dc;
+  border-radius: 6px;
+}
+
+.info-area {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 30px;
+  transition: transform .4s ease-in;
+}
+
+#item-2:checked ~ .player #test {
+  transform: translateY(0);
+}
+
+#item-2:checked ~ .player #test  {
+  transform: translateY(-40px);
+}
+
+#item-3:checked ~ .player #test  {
+  transform: translateY(-80px);
+}
+
+</style>
+
+<body>
+  <header>
+  		<div class="logo">Xero<span>Source</span></div>
+  	</header>
+  	<div class="nav-btn">Menu</div>
+  	<div class="container">
+
+  		<div class="sidebar">
+  			<nav>
+  				<a href="#">Smart<span>Farm</span></a>
+  				<ul>
+  					<li><a href="http://localhost:3000/main/1">실시간 센서</a></li>
+  					<li><a href="http://localhost:3000/sensor1/1">조도센서</a></li>
+  					<li><a href="http://localhost:3000/sensor2/1">온도센서</a></li>
+            <li><a href="http://localhost:3000/sensor3/1">습도센서</a></li>
+            <li><a href="http://localhost:3000/sensor4/1">Co2센서</a></li>
+            <li><a href="http://localhost:3000/sensor5/1">토양습도센서</a></li>
+            <li><a href="http://localhost:3000/sensor6/1">현재 CCTV</a></li>
+            <li class="active"><a href="http://localhost:3000/login/maker">제작자 </a></li>
+            <li><a href="http://localhost:3000/sensor1/1">About</a></li>
+  				</ul>
+  			</nav>
+  		</div>
+
+
+
+  		<div class="main-content">
+  			<h1>Smart Farm</h1>
+  			<p>현재 조도센서 값입니다.</p>
+  			<div class="panel-wrapper">
+  				<div class="panel-head">
+  					조도센서
+  				</div>
+  				<div class="panel-body">
+            <div class="header">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>순서</th>
+                      <th>센서명</th>
+                      <th>센서값</th>
+                      <th>측정시간</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    </tbody>
+                  </table>
+            </div>
+            <div class="container">
+    <input type="radio" name="slider" id="item-1" checked>
+    <input type="radio" name="slider" id="item-2">
+    <input type="radio" name="slider" id="item-3">
+  <div class="cards">
+    <label class="card" for="item-1" id="song-1">
+      <img src="https://images.unsplash.com/photo-1530651788726-1dbf58eeef1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=882&q=80" alt="song">
+    </label>
+    <label class="card" for="item-2" id="song-2">
+      <img src="https://images.unsplash.com/photo-1559386484-97dfc0e15539?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80" alt="song">
+    </label>
+    <label class="card" for="item-3" id="song-3">
+      <img src="https://images.unsplash.com/photo-1533461502717-83546f485d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="song">
+    </label>
+  </div>
+  <div class="player">
+    <div class="upper-part">
+      <div class="play-icon">
+        <svg width="20" height="20" fill="#2992dc" stroke="#2992dc" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-play" viewBox="0 0 24 24">
+          <defs/>
+          <path d="M5 3l14 9-14 9V3z"/>
+        </svg>
+      </div>
+      <div class="info-area" id="test">
+        <label class="song-info" id="song-info-1">
+          <div class="title">Bunker</div>
+          <div class="sub-line">
+            <div class="subtitle">Balthazar</div>
+            <div class="time">4.05</div>
+          </div>
+        </label>
+        <label class="song-info" id="song-info-2">
+          <div class="title">Words Remain</div>
+          <div class="sub-line">
+            <div class="subtitle">Moderator</div>
+            <div class="time">4.05</div>
+          </div>
+        </label>
+        <label class="song-info" id="song-info-3">
+          <div class="title">Falling Out</div>
+          <div class="sub-line">
+            <div class="subtitle">Otzeki</div>
+            <div class="time">4.05</div>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="progress-bar">
+      <span class="progress"></span>
+    </div>
+  </div>
+</div>
+                <br>
+                <br>
+              <br>
+              <br>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  </body>
+
+
+
+</html>
+
+
+
+
+//////////////

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>센서 현재 상황입니다.</h2>
+
+    <a href="insert/:curpage">추가하기</a>
+    <br>
+    <br>
+    <p>온도 센서</p>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>순서</th>
+          <th>센서명</th>
+          <th>센서값</th>
+          <th>측정시간</th>
+          <th>수정</th>
+          <th>삭제</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% data.forEach(function (data){ %>
+          <tr>
+            <td>
+              <%= data.id %>
+            </td>
+            <td>
+              <a href='/detail/<%= data.sensor %>'><%= data.sensor %></a>
+            </td>
+            <td>
+              <%= data.data %>
+            </td>
+            <td>
+              <%= data.time %>
+            </td>
+            <td>
+              <a href="edit/:curpage">수정</a>
+            </td>
+            <td>
+              <a href="/delete/<%= data.id %>">삭제</a>
+            </td>
+          </tr>
+          <% })%>
+        </tbody>
+      </table>
+    </div>
+
+
+    <br>
+    <br>
+
+
+    <div class="container">
+      <ul class="pager">
+
+        <%
+        var curset = pasing.curset
+        var endpage = pasing.endpage
+        var startpage = pasing.startpage
+        var totalset = pasing.totalset
+        var totalpage = pasing.totalpage
+        var page_list_size = pasing.page_list_size
+        var page_size = pasing.page_size
+        var curpage = pasing.curpage
+        %>
+
+        <%
+        if(curset > 1){
+          %>
+          <li value=(startpage -1) class="previous">
+            <a href='/main/<%= ( startpage - 1) %>'>이전페이지</a>
+          </li>
+          <%
+        }
+        %>
+
+        <%
+        for(var i = startpage; i <= endpage; i++){
+          if(i > totalpage){break;}
+
+          if(i == curpage){
+            %>
+            <li value=<%= i %> class='' >
+              <a href='/main/<%= i %>'>
+                <%= i %>
+              </a>
+            </li>
+
+            <%
+          }else{
+            %>
+
+            <li value=<%= i %> class='active' >
+              <a href='/main/<%= i %>'>
+                <%= i %>
+              </a>
+            </li>
+
+            <%
+          }
+          %>
+
+          <%
+        }
+        %>
+
+        <%
+        if(curset < totalset){
+          %>
+          <li value=( endpage + 1) class="next">
+            <a href='/main/<%= ( endpage + 1) %>'>다음페이지</a>
+          </li>
+
+          <%
+        }
+        %>
+
+      </ul>
+  </div>
+  <br>
+  <br>
+  </body>
+</html>

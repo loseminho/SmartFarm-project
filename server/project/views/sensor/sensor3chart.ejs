@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <!-- google charts -->
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+
+</head>
+
+<style>
+@import 'https://fonts.googleapis.com/css?family=Lato:300,400';
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body, html {
+	font-family: 'Lato', sans-serif;
+	font-size: 20px;
+	height: 100%;
+	position: relative;
+  background-image: url(https://i.dailymail.co.uk/1s/2020/05/01/15/27843784-8273755-Transport_yourself_to_the_lush_green_forest_and_mountains_of_Sri-a-82_1588343892488.jpg);
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.nav-btn {
+	width: 100%;
+	height: 35px;
+	padding-top: 4px;
+	color: #D5D3D3;
+	background-color: #212121;			 ;
+	text-align: center;
+	cursor: pointer;
+	display: none;
+}
+.nav-btn:active {
+	background-color: #090909;
+}
+
+header {
+	height: 50px;
+	width: 100%;
+	background-color: #274C6B;
+	display: none;
+}
+
+header .logo {
+	opacity: 0.9;
+	font-size: 120%;
+	padding-top: 9px;
+	padding-left: 8px;
+	color: #fff;
+}
+header .logo span {
+	font-weight: 300;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.sidebar {
+	width: 250px;
+	background-color: #302F2F;
+	position: fixed;
+	top: 0px;
+	left: 0;
+	bottom: 0;
+	box-shadow: 1px 0px 10px #777;
+}
+
+.sidebar nav > a {
+	font-size: 150%;
+	display: inline-block;
+	padding: 30px 0px;
+	padding-left: 30px;
+	opacity: 0.7;
+	transition: all 0.2s;
+}
+.sidebar nav > a:hover {
+	opacity: 1;
+}
+
+.sidebar nav a span {
+	font-weight: 300;
+}
+
+.sidebar nav ul {
+	list-style: none;
+}
+
+.sidebar nav ul li {
+	font-size: 70%;
+	padding: 19px 0;
+	padding-left: 20px;
+	border-bottom: 0.5px solid #111;
+}
+
+.sidebar nav ul li:nth-child(1):hover {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(1).active {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(2):hover {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(2).active {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(3):hover {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(3).active {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(4):hover {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(4).active {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(5):hover {
+	background-color: #f1c40f;
+}
+
+.sidebar nav ul li:nth-child(5).active {
+	background-color: #f1c40f;
+}
+
+.sidebar nav ul li:nth-child(6):hover {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(6).active {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(7):hover {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(7).active {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(8):hover {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(8).active {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(9):hover {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(9).active {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(10):hover {
+	background-color: #f1c40f;
+}
+
+.sidebar nav ul li:nth-child(10).active {
+	background-color: #f1c40f;
+}
+
+.sidebar nav ul li a {
+	color: #D7D5D5;
+}
+
+.sidebar nav ul li:hover a{
+	color: #fff;
+}
+
+.main-content {
+
+	width: calc(100% - 250px);
+	height: 100%;
+	margin-left: 250px;
+	padding: 20px 30px;
+}
+.main-content .panel-wrapper {
+	margin: 20px 0;
+	box-shadow: 0px 1px 5px #777;
+  background-color: #fff;
+}
+
+.main-content .panel-wrapper .panel-head {
+	background-color: #8e44ad;
+	color: #fff;
+	padding: 10px 10px;
+	border: 1px solid #00A5F2;
+}
+.main-content .panel-wrapper .panel-body {
+	padding: 20px 10px;
+	font-size: 80%;
+}
+
+@media only screen and (max-width: 420px){
+	header {
+		display: block;
+	}
+	.nav-btn {
+		display: block;
+	}
+	.sidebar {
+		position: relative;
+		height: 378px;
+		width: 100%;
+		display: none;
+		margin-bottom: 40px;
+		z-index: 1000;
+	}
+	.main-content {
+		width: 100%;
+		margin-left: 0;
+		z-index: -1;
+		position: relative;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	header {
+		display: block;
+	}
+	.nav-btn {
+		display: block;
+	}
+	.sidebar {
+		position: relative;
+		height: 378px;
+		width: 100%;
+		display: none;
+		margin-bottom: 40px;
+		z-index: 1000;
+	}
+	.main-content {
+		width: 100%;
+		margin-left: 0;
+		z-index: -1;
+		position: relative;
+	}
+}
+
+.about {
+   $cubic: cubic-bezier(0.64, 0.01, 0.07, 1.65);
+   $transition: 0.6s $cubic;
+   $size: 40px;
+   position: fixed;
+   z-index: 10;
+   bottom: 10px;
+   right: 10px;
+   width: $size;
+   height: $size;
+   display: flex;
+   justify-content: flex-end;
+   align-items: flex-end;
+   transition: all 0.2s ease;
+
+   .bg_links {
+      width: $size;
+      height: $size;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(#fff, 0.2);
+      border-radius: 100%;
+      backdrop-filter: blur(5px);
+      position: absolute;
+   }
+
+   .logo {
+      width: $size;
+      height: $size;
+      z-index: 9;
+      background-image: url(https://rafaelalucas91.github.io/assets/codepen/logo_white.svg);
+      background-size: 50%;
+      background-repeat: no-repeat;
+      background-position: 10px 7px;
+      opacity: 0.9;
+      transition: all 1s 0.2s ease;
+      bottom: 0;
+      right: 0;
+   }
+
+   .social {
+      opacity: 0;
+      right: 0;
+      bottom: 0;
+
+      .icon {
+         width: 100%;
+         height: 100%;
+         background-size: 20px;
+         background-repeat: no-repeat;
+         background-position: center;
+         background-color: transparent;
+         display: flex;
+         transition: all 0.2s ease, background-color 0.4s ease;
+         opacity: 0;
+         border-radius: 100%;
+      }
+
+      &.portfolio {
+         transition: all 0.8s ease;
+
+         .icon {
+            background-image: url(https://rafaelalucas91.github.io/assets/codepen/link.svg);
+         }
+      }
+
+      &.dribbble {
+         transition: all 0.3s ease;
+         .icon {
+            background-image: url(https://rafaelalucas91.github.io/assets/codepen/dribbble.svg);
+         }
+      }
+
+      &.linkedin {
+         transition: all 0.8s ease;
+         .icon {
+            background-image: url(https://rafaelalucas91.github.io/assets/codepen/linkedin.svg);
+         }
+      }
+   }
+
+   &:hover {
+      width: 105px;
+      height: 105px;
+      transition: all $transition;
+
+      .logo {
+         opacity: 1;
+         transition: all 0.6s ease;
+      }
+
+      .social {
+         opacity: 1;
+
+         .icon {
+            opacity: 0.9;
+         }
+
+         &:hover {
+            background-size: 28px;
+            .icon {
+               background-size: 65%;
+               opacity: 1;
+            }
+         }
+
+         &.portfolio {
+            right: 0;
+            bottom: calc(100% - 40px);
+            transition: all 0.3s 0s $cubic;
+            .icon {
+               &:hover {
+                  background-color: #698fb7;
+               }
+            }
+         }
+
+         &.dribbble {
+            bottom: 45%;
+            right: 45%;
+            transition: all 0.3s 0.15s $cubic;
+            .icon {
+               &:hover {
+                  background-color: #ea4c89;
+               }
+            }
+         }
+
+         &.linkedin {
+            bottom: 0;
+            right: calc(100% - 40px);
+            transition: all 0.3s 0.25s $cubic;
+            .icon {
+               &:hover {
+                  background-color: #0077b5;
+               }
+            }
+         }
+      }
+   }
+}
+
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i|IBM+Plex+Sans+Condensed:400,400i|IBM+Plex+Sans:100,100i,400,400i,700,700i|IBM+Plex+Serif:400,400i");
+
+
+.tabs {
+   margin: 0;
+   background-image: linear-gradient(135deg, $n01 0%, $n02 100%);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 80px;
+   border-radius: 2px 2px 0px 0px;
+
+   @media screen and (max-width: 512px) {
+      height: 40px;
+   }
+}
+
+/* Tab Links */
+
+.tablinks {
+   background: transparent;
+   background-image: linear-gradient(90deg, transparent 70%, rgba(255, 255, 255, 0.2) 100%);
+   border: none;
+   outline: none;
+   cursor: pointer;
+   width: 250%; /*change depending on the number of tabs*/
+   height: 80px;
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 17px;
+   font-family: "IBM Plex Sans", sans-serif;
+   overflow: hidden;
+   transition: 0.3s ease;
+
+   @media screen and (max-width: 512px) {
+      height: 40px;
+      font-size: 12px;
+   }
+}
+
+
+
+
+
+
+
+.tablinks p {
+   opacity: 0.6;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   z-index: 2;
+   transition: 0.5s ease;
+   padding: 0;
+   margin: 0;
+   color: $text;
+   backface-visibility: hidden;
+   font-weight: 400;
+}
+
+.tablinks:hover p {
+   color: red;
+   opacity: 1;
+
+   @media screen and (max-width: 512px) {
+      color: $text;
+      opacity: 0.6;
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+<body>
+  <header>
+  		<div class="logo">Xero<span>Source</span></div>
+  	</header>
+  	<div class="nav-btn">Menu</div>
+  	<div class="container">
+
+  		<div class="sidebar">
+  			<nav>
+  				<a href="#">Smart<span>Farm</span></a>
+          <ul>
+            <li><a href="http://localhost:3000/mainchart">메인 화면 </a></li>
+  					<li><a href="http://localhost:3000/sensor1chart">조도센서</a></li>
+  					<li><a href="http://localhost:3000/sensor2chart">온도센서</a></li>
+            <li class="active"><a href="http://localhost:3000/sensor3chart">습도센서</a></li>
+            <li><a href="http://localhost:3000/sensor4chart">Co2센서</a></li>
+            <li><a href="http://localhost:3000/sensor5chart">토양습도센서</a></li>
+            <li><a href="http://localhost:3000/sensor6">현재 CCTV</a></li>
+            <li><a href="http://localhost:3000/login/maker">제작자</a></li>
+            <li><a href="http://localhost:3000/sensor1chart">About</a></li>
+          </ul>
+  			</nav>
+  		</div>
+
+        		<div class="main-content">
+        			<h1>Smart Farm</h1>
+  			<p>현재 습도센서 값입니다.</p>
+  			<div class="panel-wrapper">
+  				<div class="panel-head">
+  					습도센서
+          </div>
+              <section id="wrapper">
+                    <div class="tabs">
+                       <button class="tablinks" onclick="location.href='http://localhost:3000/sensor3chart'"><p>현재 차트 값</p></button>
+                       <button class="tablinks" onclick="location.href='http://localhost:3000/sensor3'"><p>데이터 게시판</p></button>
+                    </div>
+
+                    <div class="panel-body">
+                      <div id="Line_Controls_Chart">
+                        <!-- 라인 차트 생성할 영역 -->
+                        <div id="lineChartArea" style="padding:0px 20px;"></div>
+                        <!-- 컨트롤바를 생성할 영역 -->
+                        <div id="controlsArea" style="padding:0px 20px;"></div>
+                      </div>
+                    </div>
+              </section>
+          </div>
+
+
+        </div>
+</body>
+
+<script>
+
+var chartDrowFun = {
+
+chartDrow : function(){
+  var chartData = '';
+
+  //날짜형식 변경하고 싶으시면 이 부분 수정하세요.
+  var chartDateformat 	= 'yyyy년MM월dd일';
+  //라인차트의 라인 수
+  var chartLineCount    = 10;
+  //컨트롤러 바 차트의 라인 수
+  var controlLineCount	= 10;
+
+
+  function drawDashboard() {
+
+    var data = new google.visualization.DataTable();
+    //그래프에 표시할 컬럼 추가
+    data.addColumn('datetime' , '날짜');
+    data.addColumn('number'   , '습도센서');
+
+
+    //그래프에 표시할 데이터
+    var dataRow = [];
+
+          <% for(var i = 0; i < chartData.length; i++){%>
+
+      var man = <%=chartData[i].data%>;
+
+
+
+      dataRow = [new Date('2017', '09', <%=i%> , '10'), man];
+      data.addRow(dataRow);
+    <%}%>
+
+
+      var chart = new google.visualization.ChartWrapper({
+        chartType   : 'LineChart',
+        containerId : 'lineChartArea', //라인 차트 생성할 영역
+        options     : {
+                        isStacked   : 'percent',
+                        focusTarget : 'category',
+                        height		  : 500,
+                        width			  : '100%',
+                        legend		  : { position: "top", textStyle: {fontSize: 13}},
+                        pointSize		: 5,
+                        tooltip		  : {textStyle : {fontSize:12}, showColorCode : true,trigger: 'both'},
+                        hAxis			  : {format: chartDateformat, gridlines:{count:chartLineCount,units: {
+                                                            years : {format: ['yyyy년']},
+                                                            months: {format: ['MM월']},
+                                                            days  : {format: ['dd일']},
+                                                            hours : {format: ['HH시']}}
+                                                          },textStyle: {fontSize:12}},
+          vAxis			  : {minValue: 100,viewWindow:{min:0},gridlines:{count:-1},textStyle:{fontSize:12}},
+          animation		: {startup: true,duration: 1000,easing: 'in' },
+          annotations	: {pattern: chartDateformat,
+                          textStyle: {
+                          fontSize: 15,
+                          bold: true,
+                          italic: true,
+                          color: '#871b47',
+                          auraColor: '#d799ae',
+                          opacity: 0.8,
+                          pattern: chartDateformat
+                        }
+                      }
+        }
+      });
+
+      var control = new google.visualization.ControlWrapper({
+        controlType: 'ChartRangeFilter',
+        containerId: 'controlsArea',  //control bar를 생성할 영역
+        options: {
+            ui:{
+                  chartType: 'LineChart',
+                  chartOptions: {
+                  chartArea: {'width': '60%','height' : 80},
+                    hAxis: {'baselineColor': 'none', format: chartDateformat, textStyle: {fontSize:12},
+                      gridlines:{count:controlLineCount,units: {
+                            years : {format: ['yyyy년']},
+                            months: {format: ['MM월']},
+                            days  : {format: ['dd일']},
+                            hours : {format: ['HH시']}}
+                      }}
+                  }
+            },
+              filterColumnIndex: 0
+          }
+      });
+
+      var date_formatter = new google.visualization.DateFormat({ pattern: chartDateformat});
+      date_formatter.format(data, 0);
+
+      var dashboard = new google.visualization.Dashboard(document.getElementById('Line_Controls_Chart'));
+      window.addEventListener('resize', function() { dashboard.draw(data); }, false); //화면 크기에 따라 그래프 크기 변경
+      dashboard.bind([control], [chart]);
+      dashboard.draw(data);
+
+  }
+    google.charts.setOnLoadCallback(drawDashboard);
+
+}
+}
+
+$(document).ready(function(){
+google.charts.load('current', {'packages':['line','controls']});
+chartDrowFun.chartDrow(); //chartDrow() 실행
+});
+</script>
+
+
+
+</html>
+
+
+
+
+//////////////

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <!-- google charts -->
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+
+</head>
+
+<style>
+@import 'https://fonts.googleapis.com/css?family=Lato:300,400';
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body, html {
+	font-family: 'Lato', sans-serif;
+	font-size: 20px;
+	height: 100%;
+	position: relative;
+  background-image: url(https://i.dailymail.co.uk/1s/2020/05/01/15/27843784-8273755-Transport_yourself_to_the_lush_green_forest_and_mountains_of_Sri-a-82_1588343892488.jpg);
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.nav-btn {
+	width: 100%;
+	height: 35px;
+	padding-top: 4px;
+	color: #D5D3D3;
+	background-color: #212121;			 ;
+	text-align: center;
+	cursor: pointer;
+	display: none;
+}
+.nav-btn:active {
+	background-color: #090909;
+}
+
+header {
+	height: 50px;
+	width: 100%;
+	background-color: #274C6B;
+	display: none;
+}
+
+header .logo {
+	opacity: 0.9;
+	font-size: 120%;
+	padding-top: 9px;
+	padding-left: 8px;
+	color: #fff;
+}
+header .logo span {
+	font-weight: 300;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.sidebar {
+	width: 250px;
+	background-color: #302F2F;
+	position: fixed;
+	top: 0px;
+	left: 0;
+	bottom: 0;
+	box-shadow: 1px 0px 10px #777;
+}
+
+.sidebar nav > a {
+	font-size: 150%;
+	display: inline-block;
+	padding: 30px 0px;
+	padding-left: 30px;
+	opacity: 0.7;
+	transition: all 0.2s;
+}
+.sidebar nav > a:hover {
+	opacity: 1;
+}
+
+.sidebar nav a span {
+	font-weight: 300;
+}
+
+.sidebar nav ul {
+	list-style: none;
+}
+
+.sidebar nav ul li {
+	font-size: 70%;
+	padding: 19px 0;
+	padding-left: 20px;
+	border-bottom: 0.5px solid #111;
+}
+
+.sidebar nav ul li:nth-child(1):hover {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(1).active {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(2):hover {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(2).active {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(3):hover {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(3).active {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(4):hover {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(4).active {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(5):hover {
+	background-color: #f1c40f;
+}
+
+.sidebar nav ul li:nth-child(5).active {
+	background-color: #f1c40f;
+}
+
+.sidebar nav ul li:nth-child(6):hover {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(6).active {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(7):hover {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(7).active {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(8):hover {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(8).active {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(9):hover {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(9).active {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(10):hover {
+	background-color: #f1c40f;
+}
+
+.sidebar nav ul li:nth-child(10).active {
+	background-color: #f1c40f;
+}
+
+.sidebar nav ul li a {
+	color: #D7D5D5;
+}
+
+.sidebar nav ul li:hover a{
+	color: #fff;
+}
+
+.main-content {
+
+	width: calc(100% - 250px);
+	height: 100%;
+	margin-left: 250px;
+	padding: 20px 30px;
+}
+.main-content .panel-wrapper {
+	margin: 20px 0;
+	box-shadow: 0px 1px 5px #777;
+  background-color: #fff;
+}
+
+.main-content .panel-wrapper .panel-head {
+	background-color: #2980b9;
+	color: #fff;
+	padding: 10px 10px;
+	border: 1px solid #00A5F2;
+}
+.main-content .panel-wrapper .panel-body {
+	padding: 20px 10px;
+	font-size: 80%;
+}
+
+@media only screen and (max-width: 420px){
+	header {
+		display: block;
+	}
+	.nav-btn {
+		display: block;
+	}
+	.sidebar {
+		position: relative;
+		height: 378px;
+		width: 100%;
+		display: none;
+		margin-bottom: 40px;
+		z-index: 1000;
+	}
+	.main-content {
+		width: 100%;
+		margin-left: 0;
+		z-index: -1;
+		position: relative;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	header {
+		display: block;
+	}
+	.nav-btn {
+		display: block;
+	}
+	.sidebar {
+		position: relative;
+		height: 378px;
+		width: 100%;
+		display: none;
+		margin-bottom: 40px;
+		z-index: 1000;
+	}
+	.main-content {
+		width: 100%;
+		margin-left: 0;
+		z-index: -1;
+		position: relative;
+	}
+}
+/* Images from Craig Henry's Dribbble profile: http://dribbble.com/craighenry */
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    background-color: #eefbf8;
+    background-image: radial-gradient(circle, hsla(0,0%,100%,.1), hsla(0,0%,0%,.75)),
+                      linear-gradient(left, transparent 50%, hsla(0,0%,0%,.01) 50%);
+    background-position: 50% 75%, 50% 50%;
+    background-repeat: no-repeat, repeat;
+    background-size: 150% 150%, 3em 3em;
+    font-size: 100%;
+    min-height: 100%;
+}
+  /**********/
+ /* Slider */
+/**********/
+
+.slider {
+    background-color: #fff;
+    box-shadow: inset 0 0 2px hsla(0,0%,0%,.2),
+                0 3px 1px hsla(0,0%,100%,.75),
+                0 -1px 1px 2px hsla(0,0%,0%,.1);
+    height: 18.75em;
+    left: 50%;
+    margin: -9.875em -13em;
+    padding: .5em;
+    position: absolute;
+    top: 50%;
+    width: 25em;
+}
+
+/* Frame */
+
+.slider:before {
+    background-color: #22130c;
+    bottom: -2.5em;
+    box-shadow: inset 0 1px 1px 1px hsla(0,0%,100%,.2),
+                inset 0 -2px 1px hsla(0,0%,0%,.4),
+                0 5px 50px hsla(0,0%,0%,.25),
+                0 20px 20px -15px hsla(0,0%,0%,.2),
+                0 30px 20px -15px hsla(0,0%,0%,.15),
+                0 40px 20px -15px hsla(0,0%,0%,.1);
+    content: '';
+    left: -2.5em;
+    position: absolute;
+    right: -2.5em;
+    top: -2.5em;
+    z-index: -1;
+}
+
+/* Mat */
+
+.slider:after {
+    background-color: #fff5e5;
+    bottom: -1.5em;
+    box-shadow: 0 2px 1px hsla(0,0%,100%,.2),
+                0 -1px 1px 1px hsla(0,0%,0%,.4),
+                inset 0 2px 3px 1px hsla(0,0%,0%,.2),
+                inset 0 4px 3px 1px hsla(0,0%,0%,.2),
+                inset 0 6px 3px 1px hsla(0,0%,0%,.1);
+    content: '';
+    left: -1.5em;
+    position: absolute;
+    right: -1.5em;
+    top: -1.5em;
+    z-index: -1;
+}
+
+/* Slides */
+
+.slider li {
+    box-shadow: 0 -1px 0 2px hsla(0,0%,0%,.03);
+    list-style:none;
+    position: absolute;
+}
+.slider input {
+    display: none;
+}
+
+/* Navigation */
+
+.slider label {
+    background-color: #111;
+    background-image: linear-gradient(transparent, hsla(0,0%,0%,.25));
+    border: .2em solid transparent;
+    bottom: .5em;
+    border-radius: 100%;
+    cursor: pointer;
+    display: block;
+    height: .5em;
+    left: 24em;
+    opacity: 0;
+    position: absolute;
+    transition: .25s;
+    width: .5em;
+    visibility: hidden;
+    z-index: 10;
+}
+.slider label:after {
+    border-radius: 100%;
+    bottom: -.2em;
+    box-shadow: inset 0 0 0 .2em #111,
+                inset 0 2px 2px #000,
+                0 1px 1px hsla(0,0%,100%,.25);
+    content: '';
+    left: -.2em;
+    position: absolute;
+    right: -.2em;
+    top: -.2em;
+}
+.slider:hover label {
+    opacity: 1;
+    visibility: visible;
+}
+.slider input:checked + label {
+    background-color: #fff;
+}
+.slider:hover li:nth-child(1) label {
+    left: .5em;
+}
+.slider:hover li:nth-child(2) label {
+    left: 2em;
+}
+.slider:hover li:nth-child(3) label {
+    left: 3.5em;
+}
+.slider:hover li:nth-child(4) label {
+    left: 5em;
+}
+
+/* Images */
+
+.slider img {
+    height: 18.75em;
+    opacity: 0;
+    transition: .25s;
+    width: 25em;
+    vertical-align: top;
+    visibility: hidden;
+}
+.slider li input:checked ~ img {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+}
+
+
+</style>
+
+<body>
+  <header>
+  		<div class="logo">Xero<span>Source</span></div>
+  	</header>
+  	<div class="nav-btn">Menu</div>
+  	<div class="container">
+
+  		<div class="sidebar">
+  			<nav>
+  				<a href="#">Smart<span>Farm</span></a>
+  				<ul>
+  					<li><a href="http://localhost:3000/main/1">실시간 센서</a></li>
+  					<li><a href="http://localhost:3000/sensor1/1">조도센서</a></li>
+  					<li><a href="http://localhost:3000/sensor2/1">온도센서</a></li>
+            <li><a href="http://localhost:3000/sensor3/1">습도센서</a></li>
+            <li><a href="http://localhost:3000/sensor4/1">Co2센서</a></li>
+            <li><a href="http://localhost:3000/sensor5/1">토양습도센서</a></li>
+            <li><a href="http://localhost:3000/sensor6/1">현재 CCTV</a></li>
+            <li class="active"><a href="http://localhost:3000/login/maker">제작자 </a></li>
+            <li><a href="http://localhost:3000/sensor1/1">About</a></li>
+  				</ul>
+  			</nav>
+  		</div>
+
+
+
+  		<div class="main-content">
+  			<h1>Smart Farm</h1>
+  			<p>스마트 팜이란?</p>
+  			<div class="panel-wrapper">
+  				<div class="panel-head">
+  					ABout
+  				</div>
+  				<div class="panel-body">
+            <div class="header">
+
+            </div>
+            <!-- Images from Craig Henry's Dribbble profile: http://dribbble.com/craighenry -->
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>               ▼현재 고양동 날씨 
+                            <table cellpadding=0 cellspacing=0 width=217 style="border:solid 1px #fea320;font-family:Verdana;font-size:12px;background-color:#ffffff"><tr><td><table width=100% cellpadding=0 cellspacing=0><tr><td width=8 height=30 background="https://rp5.ru/informer/htmlinfa/topshl.png"  bgcolor=#fea320> </td><td width=* align=center background="https://rp5.ru/informer/htmlinfa/topsh.png" bgcolor=#fea320><a style="color:#ffffff; font-family:Verdana;font-size: 12px;" href="https://rp5.ru/292202/ko"><b>일산서 / 고양시</b></a></td><td width=8 height=30 background="https://rp5.ru/informer/htmlinfa/topshr.png" bgcolor=#fea320> </td></tr></table></td></tr><tr><td valign=top style="padding:0;"><iframe src="https://rp5.ru/htmla.php?id=292202&lang=ko&um=00000&bg=%23ffffff&ft=%23ffffff&fc=%23fea320&c=%23000000&f=Verdana&s=12&sc=4" width=100% height=259 frameborder=0 scrolling=no style="margin:0;"></iframe></td></tr></table>
+
+<ul class="slider">
+    <li>
+        <input type="radio" id="slide1" name="slide" checked>
+        <label for="slide1"></label>
+        <img src="https://post-phinf.pstatic.net/MjAxODEwMjNfMjk4/MDAxNTQwMjU2NjY3Nzky._lRz0S5MoW2rjTRz0bWdzskQCAx6p9EFjLrxmBpraxcg.2ZdPvBdF2USK0WMEhdQMKi2lXmPgh-XxoDTbzlBGlbEg.JPEG/%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%8C%9C03.jpg?type=w1200" alt="Panel 1">
+    </li>
+    <li>
+        <input type="radio" id="slide2" name="slide">
+        <label for="slide2"></label>
+        <img src="https://post-phinf.pstatic.net/MjAxODEwMjNfMTk0/MDAxNTQwMjU3MjA2ODQx.8bdTIBWLaIzE5Xtm28zmVjGUMtL1b0dc0kZ_TPCefZIg.aX2Yb1Eq_D5tWn57xNE7pfD8Bgj4RNttl9HYPC6G6KAg.JPEG/%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%8C%9C04.jpg?type=w1200" alt="Panel 2">
+    </li>
+    <li>
+        <input type="radio" id="slide3" name="slide">
+        <label for="slide3"></label>
+        <img src="https://www.dailysecu.com/news/photo/201803/31735_24273_4357.jpg" alt="Panel 3">
+    </li>
+    <li>
+        <input type="radio" id="slide4" name="slide">
+        <label for="slide4"></label>
+        <img src="https://www.amwayon.co.kr/wp-content/uploads/2018/09/BRAND_farm_38_39_sub.jpg" alt="Panel 4">
+    </li>
+</ul>
+
+
+                <br><br>
+                저희 농장은똑똑한 농업, 스마트팜
+농업 테크의 대표 분야로는 스마트팜이 있습니다.<br>
+ 스마트팜이란, 농사 기술에 정보통신기술(ICT)을 접목하여 만든 지능화된 농장을 말하는데요.<br>
+ 사물인터넷(IoT)으로 농작물 재배 시설의 온도·습도·햇볕량·이산화탄소·토양 등을 측정 분석하고,<br>
+  농장주는 스마트폰을 통해 이 모든 것을 파악 후 제어장치를 구동하여 농작물의 생육에 필요한 상태로 조절할 수 있습니다.
+                <br><br><br><br><br><br><br><br><br>
+                <br>
+              <br>
+              <br>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  </body>
+
+
+
+</html>
+
+
+
+
+//////////////
